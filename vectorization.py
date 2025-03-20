@@ -117,3 +117,128 @@ def my_dot(a, b):
     for i in range(a.shape[0]):
         x = x + a[i] * b[i]
     return x
+
+# test 1-D
+a = np.array([1, 2, 3, 4])
+b = np.array([-1, 4, 3, 2])
+print(f"my_dot(a, b) = {my_dot(a, b)}")
+
+
+
+# test 1-D
+a = np.array([1, 2, 3, 4])
+b = np.array([-1, 4, 3, 2])
+c = np.dot(a, b)
+print(f"NumPy 1-D np.dot(a, b) = {c}, np.dot(a, b).shape = {c.shape} ") 
+c = np.dot(b, a)
+print(f"NumPy 1-D np.dot(b, a) = {c}, np.dot(a, b).shape = {c.shape} ")
+
+
+
+# np.random.seed(1)
+# a = np.random.rand(10000000)  # very large arrays
+# b = np.random.rand(10000000)
+
+# tic = time.time()  # capture start time
+# c = np.dot(a, b)
+# toc = time.time()  # capture end time
+
+# print(f"np.dot(a, b) =  {c:.4f}")
+# print(f"Vectorized version duration: {1000*(toc-tic):.4f} ms ")
+
+# tic = time.time()  # capture start time
+# c = my_dot(a,b)
+# toc = time.time()  # capture end time
+
+# print(f"my_dot(a, b) =  {c:.4f}")
+# print(f"loop version duration: {1000*(toc-tic):.4f} ms ")
+
+# del(a);del(b)  #remove these big arrays from memory
+
+
+
+# show common Course 1 example
+X = np.array([[1],[2],[3],[4]])
+w = np.array([2])
+c = np.dot(X[1], w)
+
+print(f"X[1] has shape {X[1].shape}")
+print(f"w has shape {w.shape}")
+print(f"c has shape {c.shape}")
+
+# EXPECTED OUTPUT:
+  # X[1] has shape (1,)
+  # w has shape (1,)
+  # c has shape ()
+
+
+a = np.zeros((1, 5))                                       
+print(f"a shape = {a.shape}, a = {a}")                     
+
+a = np.zeros((2, 1))                                                                   
+print(f"a shape = {a.shape}, a = {a}") 
+
+a = np.random.random_sample((1, 1))  
+print(f"a shape = {a.shape}, a = {a}") 
+
+# EXPECTED OUTPUT:
+  # a shape = (1, 5), a = [[0. 0. 0. 0. 0.]]
+  # a shape = (2, 1), a = [[0.]
+  #  [0.]]
+  # a shape = (1, 1), a = [[0.98797985]]
+
+
+#vector indexing operations on matrices
+a = np.arange(6).reshape(-1, 2)   #reshape is a convenient way to create matrices
+print(f"a.shape: {a.shape}, \na= {a}")
+
+#access an element
+print(f"\na[2,0].shape:   {a[2, 0].shape}, a[2,0] = {a[2, 0]},     type(a[2,0]) = {type(a[2, 0])} Accessing an element returns a scalar\n")
+
+#access a row
+print(f"a[2].shape:   {a[2].shape}, a[2]   = {a[2]}, type(a[2])   = {type(a[2])}")
+
+
+# Expected Output:
+  # a.shape: (3, 2), 
+  # a= [[0 1]
+  # [2 3]
+  # [4 5]]
+
+  # a[2,0].shape:   (), a[2,0] = 4,     type(a[2,0]) = <class 'numpy.int64'> Accessing an element returns a scalar
+
+  # a[2].shape:   (2,), a[2]   = [4 5], type(a[2])   = <class 'numpy.ndarray'>
+
+
+#vector 2-D slicing operations
+a = np.arange(20).reshape(-1, 10)
+print(f"a = \n{a}")
+
+#access 5 consecutive elements (start:stop:step)
+print("a[0, 2:7:1] = ", a[0, 2:7:1], ",  a[0, 2:7:1].shape =", a[0, 2:7:1].shape, "a 1-D array")
+
+#access 5 consecutive elements (start:stop:step) in two rows
+print("a[:, 2:7:1] = \n", a[:, 2:7:1], ",  a[:, 2:7:1].shape =", a[:, 2:7:1].shape, "a 2-D array")
+
+# access all elements
+print("a[:,:] = \n", a[:,:], ",  a[:,:].shape =", a[:,:].shape)
+
+# access all elements in one row (very common usage)
+print("a[1,:] = ", a[1,:], ",  a[1,:].shape =", a[1,:].shape, "a 1-D array")
+# same as
+print("a[1]   = ", a[1],   ",  a[1].shape   =", a[1].shape, "a 1-D array")
+
+
+# Expected Output:
+  # a = 
+  # [[ 0  1  2  3  4  5  6  7  8  9]
+  # [10 11 12 13 14 15 16 17 18 19]]
+  # a[0, 2:7:1] =  [2 3 4 5 6] ,  a[0, 2:7:1].shape = (5,) a 1-D array
+  # a[:, 2:7:1] = 
+  # [[ 2  3  4  5  6]
+  # [12 13 14 15 16]] ,  a[:, 2:7:1].shape = (2, 5) a 2-D array
+  # a[:,:] = 
+  # [[ 0  1  2  3  4  5  6  7  8  9]
+  # [10 11 12 13 14 15 16 17 18 19]] ,  a[:,:].shape = (2, 10)
+  # a[1,:] =  [10 11 12 13 14 15 16 17 18 19] ,  a[1,:].shape = (10,) a 1-D array
+  # a[1]   =  [10 11 12 13 14 15 16 17 18 19] ,  a[1].shape   = (10,) a 1-D array
