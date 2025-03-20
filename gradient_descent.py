@@ -45,3 +45,6 @@ def compute_gradient(x, y, w, b):
     dj_db = dj_db / m 
         
     return dj_dw, dj_db
+
+plt_gradients(x_train,y_train, compute_cost, compute_gradient)
+plt.show()
