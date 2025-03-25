@@ -18,3 +18,24 @@ exp_val = np.exp(input_val)
 
 print("Input to exp:", input_val)
 print("Output of exp:", exp_val)
+
+# Input to exp: [1 2 3]
+# Output of exp: [ 2.72  7.39 20.09]
+# Input to exp: 1
+# Output of exp: 2.718281828459045
+
+def sigmoid(z):
+    """
+    Compute the sigmoid of z
+
+    Args:
+        z (ndarray): A scalar, numpy array of any size.
+
+    Returns:
+        g (ndarray): sigmoid(z), with the same shape as z
+         
+    """
+
+    g = 1/(1+np.exp(-z))
+   
+    return g
