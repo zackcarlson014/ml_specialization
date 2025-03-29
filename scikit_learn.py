@@ -7,3 +7,7 @@ from sklearn.linear_model import LogisticRegression
 
 lr_model = LogisticRegression()
 lr_model.fit(X, y)
+
+y_pred = lr_model.predict(X)
+
+print("Prediction on training set:", y_pred)
