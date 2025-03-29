@@ -39,3 +39,8 @@ def compute_cost_logistic(X, y, w, b):
              
     cost = cost / m
     return cost
+
+# EXAMPLE USAGE
+w_tmp = np.array([1,1])
+b_tmp = -3
+print(compute_cost_logistic(X_train, y_train, w_tmp, b_tmp))
