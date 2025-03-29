@@ -91,3 +91,11 @@ def gradient_descent(X, y, w_in, b_in, alpha, num_iters):
             print(f"Iteration {i:4d}: Cost {J_history[-1]}   ")
         
     return w, b, J_history         #return final w,b and J history for graphing
+
+w_tmp  = np.zeros_like(X_train[0])
+b_tmp  = 0.
+alph = 0.1
+iters = 10000
+
+w_out, b_out, _ = gradient_descent(X_train, y_train, w_tmp, b_tmp, alph, iters) 
+print(f"\nupdated parameters: w:{w_out}, b:{b_out}")
