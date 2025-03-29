@@ -99,3 +99,34 @@ iters = 10000
 
 w_out, b_out, _ = gradient_descent(X_train, y_train, w_tmp, b_tmp, alph, iters) 
 print(f"\nupdated parameters: w:{w_out}, b:{b_out}")
+
+# PLOT DECISION BOUNDARY
+fig,ax = plt.subplots(1,1,figsize=(5,4))
+# plot the probability 
+plt_prob(ax, w_out, b_out)
+
+# Plot the original data
+ax.set_ylabel(r'$x_1$')
+ax.set_xlabel(r'$x_0$')   
+ax.axis([0, 4, 0, 3.5])
+plot_data(X_train,y_train,ax)
+
+# Plot the decision boundary
+x0 = -b_out/w_out[0]
+x1 = -b_out/w_out[1]
+ax.plot([0,x0],[x1,0], c=dlc["dlblue"], lw=1)
+plt.show()
+
+
+# ANOTHER DATA SET
+x_train = np.array([0., 1, 2, 3, 4, 5])
+y_train = np.array([0,  0, 0, 1, 1, 1])
+
+fig,ax = plt.subplots(1,1,figsize=(4,3))
+plt_tumor_data(x_train, y_train, ax)
+plt.show()
+
+w_range = np.array([-1, 7])
+b_range = np.array([1, -14])
+quad = plt_quad_logistic( x_train, y_train, w_range, b_range )
+
