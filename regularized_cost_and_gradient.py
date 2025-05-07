@@ -168,3 +168,7 @@ dj_db_tmp, dj_dw_tmp =  compute_gradient_logistic_reg(X_tmp, y_tmp, w_tmp, b_tmp
 
 print(f"dj_db: {dj_db_tmp}", )
 print(f"Regularized dj_dw:\n {dj_dw_tmp.tolist()}", )
+
+plt.close("all")
+# display(output)
+ofit = overfit_example(True)
